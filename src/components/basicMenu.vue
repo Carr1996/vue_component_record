@@ -1,48 +1,33 @@
 <template>
   <div>
-    <el-menu default-active="1" class="menu" @select="handleSelect">
-      <el-submenu v-for="i in menuList" :key="i.index" :index="i.index">
+    <el-menu :default-active="this.$router.path" class="menu" router>
+      <el-submenu v-for="i in routes" v-show="i.name && i.children" :key="i.path" :index="i.path">
         <template slot="title">
           <i :class="i.icon"></i>
           <span>{{i.name}}</span>
         </template>
-        <el-menu-item v-for="j in i['children']" :key="j.index" :index="j.index">{{j.name}}</el-menu-item>
+        <el-menu-item v-for="j in i['children']" v-show="j.name" :key="i.path+'/'+j.path" :index="i.path+'/'+j.path" :disabled="j.disabled">{{j.name}}</el-menu-item>
       </el-submenu>
-
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">canvas</span>
+      <el-menu-item v-for="i in routes" v-show="i.name && !i.children" :key="i.path" :index="i.path" :disabled="i.disabled">
+        <i :class="i.icon"></i>
+        <span slot="title">{{i.name}}</span>
       </el-menu-item>
     </el-menu>
+    
   </div>
 </template>
 
 <script>
-import menuList from './menuConfig.js'
+import routes from '../router/routes'
 export default {
   name: "basicMenu",
   components: {},
   data() {
     return {
-      menuList
+      routes
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      let levelIndex = keyPath[0];
-      let levelItem = this.menuList.filter(i=> {
-        return i.index == levelIndex
-      })
-      let item = {}
-      if(levelItem[0].children) {
-        item = levelItem[0].children.filter(i => {
-          return i.index == keyPath[1]
-        })
-      } else {
-        item = levelItem
-      }
-      this.$emit('selectItem',item[0])
-    }
   }
 };
 </script>

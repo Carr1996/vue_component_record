@@ -1,25 +1,18 @@
 <template>
-  <div id="app">
-    <!-- <router-link to="/home">Home</router-link>
-    |
-    <router-link to="/about">About</router-link>
-    <router-view></router-view> -->
-    <basic-menu class="menu" @selectItem="selectItem"></basic-menu>
-    <div class="component"></div>
+  <div id="app">  
+    <basic-menu class="menu"></basic-menu>
+    <router-view class="component"></router-view>
   </div>
 </template>
 
 <script>
-import basicMenu from "./components/basicMenu"
+import basicMenu from "./components/basicMenu";
 export default {
   name: "app",
   components: {
-    basicMenu
+    basicMenu,
   },
   methods: {
-    selectItem(item) {
-      console.log('selectItem',item)
-    }
   }
 };
 </script>
@@ -39,7 +32,7 @@ export default {
     height: 700px;
   }
   .component {
-    background: red;
+    // background: red;
     width: 86%;
     height: 700px;
     margin-left: 203px;
