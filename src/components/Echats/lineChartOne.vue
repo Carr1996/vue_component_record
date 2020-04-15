@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     drawChart() {
-      let chart = this.$echarts.init(this.$refs.chartRef, null, { renderer: 'canvas' });
+      let chart = echarts.init(this.$refs.chartRef, null, { renderer: 'canvas' });
       let option = {
         grid: {
           bottom: '20%',

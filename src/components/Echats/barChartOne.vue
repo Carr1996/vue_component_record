@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     drawChart() {
-      let chart = this.$echarts.init(this.$refs.chartRef, null, {
+      let chart = echarts.init(this.$refs.chartRef, null, {
         renderer: "canvas"
       });
       let option = {
