@@ -19,6 +19,7 @@ export default {
         renderer: "canvas"
       });
       let option = {
+        backgroundColor: "#2c343c",
         grid: {
           left: "-10%",
           right: "2%",

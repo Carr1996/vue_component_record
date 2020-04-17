@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 // Vue.prototype.$echarts = echarts
 global.echarts = echarts
 global.THREE = Three
-global._ = _
+// global._ = _
 new Vue({
   router,
   store,

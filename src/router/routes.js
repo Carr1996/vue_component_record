@@ -4,6 +4,7 @@ import canvas_index from "../views/canvas_index.vue";
 import d3_index from "../views/d3_index.vue";
 import lineChartOne from "../components/Echats/lineChartOne.vue";
 import barChartOne from "../components/Echats/barChartOne.vue";
+import pieChartOne from "../components/Echats/pieChartOne.vue";
 import scatterChartOne from "../components/Echats/scatterChartOne.vue";
 
 const routes = [
@@ -20,7 +21,7 @@ const routes = [
       { name: "折线图（带背景色）", path: "line", component: lineChartOne },
       { name: "柱状图", path: "bar", component: barChartOne },
       { name: "横向气泡图", path: "scatter", component: scatterChartOne },
-      { name: "饼图", path: "pie", disabled: true },
+      { name: "饼图", path: "pie", component: pieChartOne },
     ]
   },
   {

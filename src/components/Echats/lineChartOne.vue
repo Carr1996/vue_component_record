@@ -19,6 +19,8 @@ export default {
   },
   methods: {
     drawChart() {
+      console.log('xxxxxx',_.uniq(['1',2,'1']))
+      debugger
       let chart = echarts.init(this.$refs.chartRef, null, { renderer: 'canvas' });
       let option = {
         grid: {

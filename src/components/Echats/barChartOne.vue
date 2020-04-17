@@ -19,6 +19,7 @@ export default {
         renderer: "canvas"
       });
       let option = {
+        backgroundColor: "#2c343c",
         grid: {
           top: "12%",
           left: "1%",
@@ -49,7 +50,7 @@ export default {
             axisLine: {
               lineStyle: {
                 width: "0",
-                color: "black"
+                color: "white"
               }
             },
             data: [
@@ -87,7 +88,7 @@ export default {
                   show: true,
                   position: "top",
                   formatter: "{c}",
-                  color: "#000",
+                  color: "#fff",
                   fontSize: 30
                 }
               }

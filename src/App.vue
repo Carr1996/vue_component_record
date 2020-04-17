@@ -34,7 +34,7 @@ export default {
   .component {
     // background: red;
     width: 86%;
-    height: 700px;
+    height: 900px;
     margin-left: 203px;
   }
 }
