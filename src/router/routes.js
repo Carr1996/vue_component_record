@@ -6,6 +6,7 @@ import lineChartOne from "../components/Echats/lineChartOne.vue";
 import barChartOne from "../components/Echats/barChartOne.vue";
 import pieChartOne from "../components/Echats/pieChartOne.vue";
 import scatterChartOne from "../components/Echats/scatterChartOne.vue";
+import basicCanvas from "../components/Canvas/basicCanvas.vue";
 
 const routes = [
   {
@@ -35,7 +36,10 @@ const routes = [
     path: "/canvas",
     icon: "el-icon-document",
     disabled: true,
-    component: canvas_index
+    component: canvas_index,
+    children: [
+      { name: "基础", path: "basic", component: basicCanvas },
+    ]
   },
   {
     name: "d3",

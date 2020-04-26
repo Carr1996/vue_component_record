@@ -1,5 +1,5 @@
 <template>
-  <div id="app">  
+  <div id="app">
     <basic-menu class="menu"></basic-menu>
     <router-view class="component"></router-view>
   </div>
@@ -10,10 +10,9 @@ import basicMenu from "./components/basicMenu";
 export default {
   name: "app",
   components: {
-    basicMenu,
+    basicMenu
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 
@@ -25,17 +24,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   position: relative;
+  height: 700px;
   .menu {
     position: absolute;
     left: 0px;
     top: 0px;
-    height: 700px;
+    height: 100%;
   }
   .component {
-    // background: red;
     width: 86%;
-    height: 900px;
+    height: 100%;
     margin-left: 203px;
+    .routerView {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 </style>
