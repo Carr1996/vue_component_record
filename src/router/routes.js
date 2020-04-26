@@ -14,6 +14,7 @@ const routes = [
       { name: "柱状图", path: "bar", component: resolve => require(['../components/Echats/barChartOne.vue'], resolve) },
       { name: "横向气泡图", path: "scatter", component: resolve => require(['../components/Echats/scatterChartOne.vue'], resolve) },
       { name: "饼图", path: "pie", component: resolve => require(['../components/Echats/pieChartOne.vue'], resolve) },
+      { name: "迁徙地图", path: "effectScatter", component: resolve => require(['../components/Echats/effectScatter.vue'], resolve) },
     ]
   },
   {
@@ -45,7 +46,7 @@ const routes = [
     icon: "el-icon-picture-outline-round",
     component: () => import('../views/common_func.vue'),
     children: [
-      { name: "基础", path: "date", component: resolve => require(['../components/CommonFunc/dateFunc.vue'], resolve) },
+      { name: "日期函数", path: "date", component: resolve => require(['../components/CommonFunc/dateFunc.vue'], resolve) },
     ]
   },
 
