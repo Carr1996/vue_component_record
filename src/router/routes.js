@@ -1,12 +1,3 @@
-import echarts_index from "../views/echarts_index.vue";
-import threeJS_index from "../views/threeJS_index.vue";
-import canvas_index from "../views/canvas_index.vue";
-import d3_index from "../views/d3_index.vue";
-import lineChartOne from "../components/Echats/lineChartOne.vue";
-import barChartOne from "../components/Echats/barChartOne.vue";
-import pieChartOne from "../components/Echats/pieChartOne.vue";
-import scatterChartOne from "../components/Echats/scatterChartOne.vue";
-import basicCanvas from "../components/Canvas/basicCanvas.vue";
 
 const routes = [
   {
@@ -16,38 +7,47 @@ const routes = [
   {
     name: "echarts",
     path: "/echarts",
-    icon: "el-icon-location",
-    component: echarts_index,
+    icon: "el-icon-s-data",
+    component: () => import('../views/echarts_index.vue'),
     children: [
-      { name: "折线图（带背景色）", path: "line", component: lineChartOne },
-      { name: "柱状图", path: "bar", component: barChartOne },
-      { name: "横向气泡图", path: "scatter", component: scatterChartOne },
-      { name: "饼图", path: "pie", component: pieChartOne },
+      { name: "折线图（带背景色）", path: "line", component: resolve => require(['../components/Echats/lineChartOne.vue'], resolve) },
+      { name: "柱状图", path: "bar", component: resolve => require(['../components/Echats/barChartOne.vue'], resolve) },
+      { name: "横向气泡图", path: "scatter", component: resolve => require(['../components/Echats/scatterChartOne.vue'], resolve) },
+      { name: "饼图", path: "pie", component: resolve => require(['../components/Echats/pieChartOne.vue'], resolve) },
     ]
   },
   {
     name: "threeJS",
     path: "/threeJS",
     icon: "el-icon-attract",
-    component: threeJS_index
+    component: () => import('../views/threeJS_index.vue')
   },
   {
     name: "canvas",
     path: "/canvas",
     icon: "el-icon-document",
     disabled: true,
-    component: canvas_index,
+    component: () => import('../views/canvas_index.vue'),
     children: [
-      { name: "基础", path: "basic", component: basicCanvas },
+      { name: "基础", path: "basic", component: resolve => require(['../components/Canvas/basicCanvas.vue'], resolve) },
     ]
   },
   {
     name: "d3",
     path: "/d3",
-    icon: "el-icon-attract",
+    icon: "el-icon-ice-cream-round",
     disabled: true,
-    component: d3_index
+    component: () => import('../views/d3_index.vue')
   },
-  
+  {
+    name: "commonFunc",
+    path: "/commonFunc",
+    icon: "el-icon-picture-outline-round",
+    component: () => import('../views/common_func.vue'),
+    children: [
+      { name: "基础", path: "date", component: resolve => require(['../components/CommonFunc/dateFunc.vue'], resolve) },
+    ]
+  },
+
 ]
 export default routes;
