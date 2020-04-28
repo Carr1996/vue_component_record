@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div style="width:10px;height:20px;backgroundColor: red"></div>
-    <canvas class="exam" width="300" height="300"></canvas>
+    <!-- default{width:300px,height:150px} -->
+    <canvas id="canvas_1" class="exam" ref="canvas" width="2200" height="700">
+      浏览器版本不支持Canvas
+    </canvas>
   </div>
 </template>
 
@@ -19,17 +21,19 @@ export default {
   
   },
   mounted() {
-  
+  this.draw()
   },
   beforeDestroy() {
   
   },
   methods: {
     draw() {
-      let canvas = document.getElementsByTagName('canvas')
+      let canvas = this.$refs.canvas
       if(!canvas.getContext) return
-      let ctx = canvas.getContext("2d")
+      let ctx = canvas.getContext("2d") //访问绘画上下文
       //开始代码
+      ctx.fillStyle="pink" //color
+      ctx.fillRect(10,10,200,100) //(x,y,width,height)
     }
   },
   watch: {},
@@ -37,6 +41,5 @@ export default {
 </script>
 <style lang='less' scoped>
 .exam {
-  border: 1px solid #000;
 }
 </style>
