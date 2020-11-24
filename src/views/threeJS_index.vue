@@ -5,9 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'threeJS_index',
-}
-
+  name: "threeJS_index"
+};
 </script>
-<style lang="less">
-</style>
+<style lang="less"></style>

@@ -10,6 +10,8 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "semi":false, // 是否需要分号
+    "singleQuote": true, //单引号
   }
 };

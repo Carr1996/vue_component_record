@@ -40,15 +40,5 @@ const routes = [
     disabled: true,
     component: () => import('../views/d3_index.vue')
   },
-  {
-    name: "commonFunc",
-    path: "/commonFunc",
-    icon: "el-icon-picture-outline-round",
-    component: () => import('../views/common_func.vue'),
-    children: [
-      { name: "日期函数", path: "date", component: resolve => require(['../components/CommonFunc/dateFunc.vue'], resolve) },
-    ]
-  },
-
 ]
 export default routes;
