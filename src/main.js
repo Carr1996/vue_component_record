@@ -6,6 +6,7 @@ import echarts from "echarts";
 import * as Three from "three";
 import _ from "lodash";
 import "./plugins/element.js";
+import './assets/basic_style.less';
 
 Vue.config.productionTip = false;
 // Vue.prototype.$echarts = echarts

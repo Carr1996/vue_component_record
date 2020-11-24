@@ -34,11 +34,10 @@ const routes = [
     ]
   },
   {
-    name: "d3",
-    path: "/d3",
+    name: "常规效果",
+    path: "/common_content",
     icon: "el-icon-ice-cream-round",
-    disabled: true,
-    component: () => import('../views/d3_index.vue')
+    component: () => import('../components/Common_content/common_content.vue')
   },
 ]
 export default routes;
