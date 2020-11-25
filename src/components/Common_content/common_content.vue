@@ -7,21 +7,27 @@
   </div>
 </template>
 <script>
+import "./style.less";
+import func from "../General_Basic/commonFun";
 export default {
   name: "common_content",
   data() {
     return {
       show1: true,
+      weather: {}
     };
   },
+  mounted() {
+      fetch("/tencent/weather/common?weather_type=observe&source=pc&province=上海&city=上海")
+      .then(response => response.json())
+      .then(data => {
+        this.weather = data.observe
+      })
+      .catch(error => console.log('error is', error));
+  
+  },
+  methods: {},
 };
 </script>
 <style lang="less" scoped>
-.common {
-  .one {
-    width: 50px;
-    height: fit-content;
-    background: pink;
-  }
-}
 </style>

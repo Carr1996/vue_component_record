@@ -1,34 +1,18 @@
 <template>
   <div>
     <el-menu :default-active="this.$router.path" class="menu" router>
-      <el-submenu
-        v-for="i in routes.filter(i => {
+      <el-submenu v-for="i in routes.filter((i) => {
           return i.children && i.name;
-        })"
-        :key="i.path"
-        :index="i.path"
-      >
+        })" :key="i.path" :index="i.path">
         <template slot="title">
           <i :class="i.icon"></i>
           <span>{{ i.name }}</span>
         </template>
-        <el-menu-item
-          v-for="j in i['children']"
-          v-show="j.name"
-          :key="i.path + '/' + j.path"
-          :index="i.path + '/' + j.path"
-          :disabled="j.disabled"
-          >{{ j.name }}</el-menu-item
-        >
+        <el-menu-item v-for="j in i['children']" v-show="j.name" :key="i.path + '/' + j.path" :index="i.path + '/' + j.path" :disabled="j.disabled">{{ j.name }}</el-menu-item>
       </el-submenu>
-      <el-menu-item
-        v-for="i in routes.filter(i => {
+      <el-menu-item v-for="i in routes.filter((i) => {
           return !i.children && i.name;
-        })"
-        :key="i.path"
-        :index="i.path"
-        :disabled="i.disabled"
-      >
+        })" :key="i.path" :index="i.path" :disabled="i.disabled">
         <i :class="i.icon"></i>
         <span class="title">{{ i.name }}</span>
       </el-menu-item>
@@ -43,10 +27,10 @@ export default {
   components: {},
   data() {
     return {
-      routes
+      routes,
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

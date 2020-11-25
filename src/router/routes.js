@@ -39,5 +39,16 @@ const routes = [
     icon: "el-icon-ice-cream-round",
     component: () => import('../components/Common_content/common_content.vue')
   },
+  {
+    name: "高德地图",
+    path: "/amap",
+    icon: "el-icon-document",
+    disabled: true,
+    component: () => import('../views/amap_index.vue'),
+    children: [
+      { name: "原始高德地图", path: "basic_amap", component: resolve => require(['../components/AMap/amap.vue'], resolve) },
+      { name: "echarts高德地图", path: "echart_amap", component: resolve => require(['../components/AMap/amap_echarts.vue'], resolve) },
+    ]
+  },
 ]
 export default routes;
