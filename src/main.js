@@ -7,12 +7,13 @@ import * as Three from "three";
 import _ from "lodash";
 import "./plugins/element.js";
 import './assets/basic_style.less';
+import api from "@/Api/api";
 
 Vue.config.productionTip = false;
-// Vue.prototype.$echarts = echarts
+Vue.prototype.$api = api
 global.echarts = echarts;
 global.THREE = Three;
-// global._ = _
+global._ = _
 new Vue({
   router,
   store,
