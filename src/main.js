@@ -10,7 +10,7 @@ import './assets/basic_style.less';
 import api from "@/Api/api";
 
 Vue.config.productionTip = false;
-Vue.prototype.$api = api
+Vue.prototype.$api = api;
 global.echarts = echarts;
 global.THREE = Three;
 global._ = _
