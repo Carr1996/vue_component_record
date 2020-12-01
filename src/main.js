@@ -8,7 +8,8 @@ import _ from "lodash";
 import "./plugins/element.js";
 import './assets/basic_style.less';
 import api from "@/Api/api";
-// import commonFun from "@assets/commonFun"
+import commonFunc from "@assets/commonFunc"
+
 Vue.config.productionTip = false;
 Vue.prototype.$api = api;
 global.echarts = echarts;

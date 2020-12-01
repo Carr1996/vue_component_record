@@ -19,8 +19,8 @@ export default {
       default: 10,
     },
     color: {
-      type: [Array],
-      default: ["aqua", "#65747f"],
+      type: Array,
+      default: () => {return ["aqua", "#65747f"]},
     },
   },
   data() {
