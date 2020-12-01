@@ -5,18 +5,17 @@
 </template>
 
 <script>
-import "./echarts-amap.min.js"
-import amapShare from "./amapShare.js"
+import "./echarts-amap.min.js";
+import amapShare from "./amapShare.js";
 export default {
   name: "amap_echarts",
   components: {},
   data() {
     return {
-       mapCharts: null,
+      mapCharts: null,
       map: null,
       layer: null,
       mapOption: {
-        // mapStyle: 'amap://styles/ce0faee96b28a87de4bdc697d618ee4c',
         zoom: 18,
         zooms: [9, 18],
         rotateEnable: true,
@@ -34,24 +33,26 @@ export default {
   beforeDestroy() {},
   methods: {
     initEchartsMap() {
-      this.mapCharts = echarts.init(this.$refs.amap, null, { renderer: 'canvas' });
+      this.mapCharts = echarts.init(this.$refs.amap, null, {
+        renderer: "canvas",
+      });
       this.mapCharts.setOption({
         title: {
-          text: '',
-          subtext: '',
-          left: 'center',
+          text: "",
+          subtext: "",
+          left: "center",
           textStyle: {
-            color: '#fff'
-          }
+            color: "#fff",
+          },
         },
         amap: this.mapOption,
         animation: false,
-        series: []
+        series: [],
       });
-      this.map = this.mapCharts.getModel().getComponent('amap').getAMap();
-      window.map = this.map
-      window.mapCharts = this.mapCharts
-      amapShare.districtMap() //多边形边界
+      this.map = this.mapCharts.getModel().getComponent("amap").getAMap();
+      window.map = this.map;
+      window.mapCharts = this.mapCharts;
+      amapShare.districtMap(); //多边形边界
       this.map.on("complete", this.onMapLoaded.bind(this));
     },
     onMapLoaded() {

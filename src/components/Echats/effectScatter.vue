@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-require('../../assets/china.js')
+require('./china.js')
 export default {
   name: "effectScatter",
   data() {
