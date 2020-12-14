@@ -9,7 +9,7 @@ module.exports = {
   publicPath: './', // 公共路径
   devServer: {
     open: false,
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 8080,
     https: false,
     hotOnly: false, // 热模块更新

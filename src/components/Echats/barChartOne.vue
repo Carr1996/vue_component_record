@@ -16,7 +16,7 @@ export default {
   methods: {
     drawChart() {
       let chart = echarts.init(this.$refs.chartRef, null, {
-        renderer: "canvas"
+        renderer: "canvas",
       });
       let option = {
         backgroundColor: "#2c343c",
@@ -24,17 +24,17 @@ export default {
           top: "12%",
           left: "1%",
           right: "2%",
-          bottom: "20%"
+          bottom: "20%",
         },
         tooltip: {
           trigger: "axis",
           axisPointer: {
-            type: "shadow"
+            type: "shadow",
           },
           textStyle: {
             fontSize: 60,
-            color: "#fff"
-          }
+            color: "#fff",
+          },
         },
         xAxis: [
           {
@@ -42,16 +42,16 @@ export default {
             show: true,
             axisLabel: {
               fontSize: 22,
-              margin: 25
+              margin: 25,
             },
             axisTick: {
-              show: false
+              show: false,
             },
             axisLine: {
               lineStyle: {
                 width: "0",
-                color: "white"
-              }
+                color: "white",
+              },
             },
             data: [
               "徐家汇",
@@ -66,14 +66,14 @@ export default {
               "华泾镇",
               "长桥",
               "康健",
-              "凌云路"
-            ]
-          }
+              "凌云路",
+            ],
+          },
         ],
         yAxis: [
           {
-            show: false
-          }
+            show: false,
+          },
         ],
         series: [
           {
@@ -89,17 +89,29 @@ export default {
                   position: "top",
                   formatter: "{c}",
                   color: "#fff",
-                  fontSize: 30
-                }
-              }
+                  fontSize: 30,
+                },
+              },
             },
-            data: [40, 30, 29, 26, 18, 16, 15, 12, 11, 9, 8, 5, 4]
-          }
-        ]
+            data: [40, 30, 29, 26, 18, 16, 15, 12, 11, 9, 8, 5, 4],
+          },
+        ],
       };
       chart.setOption(option);
-    }
-  }
+
+      let dataIndex = 0;
+      let xLength = 13 //数据量
+        setInterval(() => {
+          chart.dispatchAction({
+          type: "showTip",
+          seriesIndex: 0,
+          dataIndex: dataIndex++,
+        });
+
+        dataIndex %= xLength;
+        },1000)
+    },
+  },
 };
 </script>
 <style lang="less">

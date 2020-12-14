@@ -70,9 +70,15 @@ export default {
   watch: {},
 };
 </script>
-<style lang='less' scoped>
+<style lang='less'>
 .amap {
   width: 100%;
   height: 100%;
+  .amap-logo {
+    display: none !important;
+  }
+  .amap-copyright {
+    opacity: 0;
+  }
 }
 </style>
