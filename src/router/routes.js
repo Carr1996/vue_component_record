@@ -21,7 +21,10 @@ const routes = [
     name: "threeJS",
     path: "/threeJS",
     icon: "el-icon-attract",
-    component: () => import('../views/threeJS_index.vue')
+    component: () => import('../views/threeJS_index.vue'),
+    children: [
+      { name: "基础", path: "basic", component: resolve => require(['../components/threeJS/basic.vue'], resolve) },
+    ]
   },
   {
     name: "canvas",
