@@ -48,10 +48,10 @@ export default {
 
       this.loaderModel();
     },
+    // 加载模型
     loaderModel() {
       var loader = new THREE.ObjectLoader();
       loader.load("./model_test.json", (obj) => {
-        //   loader.load("./1.obj",  (obj) => {
         obj.scale.x = obj.scale.y = obj.scale.z = 1;
         this.scene.add(obj);
       });
