@@ -22,6 +22,7 @@ export default {
       let container = document.getElementById("THREE_container");
       //   创建场景
       this.scene = new THREE.Scene();
+      this.scene.background = new THREE.Color( 0xcce0ff );
       // 创建摄像机
       this.camera = new THREE.PerspectiveCamera(
         70, //视野角度
@@ -29,45 +30,34 @@ export default {
         0.01, //近截面
         500 //远截面
       );
-      this.camera.position.set(0, 0, 100);
+      this.camera.position.set(0, 0, 200);
       this.camera.lookAt(0, 0, 0);
-			
+
       // 渲染器
       this.renderer = new THREE.WebGLRenderer({
         antialias: true, //抗锯齿
       });
       this.renderer.setSize(container.clientWidth, container.clientHeight);
-			container.appendChild(this.renderer.domElement);
-			
-			// 控制器
+      container.appendChild(this.renderer.domElement);
+      // 控制器
       let controls = new THREE.OrbitControls(
         this.camera,
         this.renderer.domElement
       );
-      // controls.maxPolarAngle = Math.PI * 0.5;
-      // controls.minDistance = 1000;
-      // controls.maxDistance = 5000;
+      this.scene.add(new THREE.AmbientLight(0x666666));
 
-      let geometry = new THREE.BoxGeometry(50, 50, 50);
-      let material = new THREE.MeshNormalMaterial();
-
-      this.mesh = new THREE.Mesh(geometry, material);
-      this.scene.add(this.mesh);
-      this.drawLine();
+      this.loaderModel();
     },
-    drawLine() {
-      let material = new THREE.LineBasicMaterial({ color: 0x0000ff });
-      let geometry = new THREE.Geometry();
-      geometry.vertices.push(new THREE.Vector3(-100, -50, 0));
-      geometry.vertices.push(new THREE.Vector3(0, 10, 0));
-      geometry.vertices.push(new THREE.Vector3(100, -50, 0));
-      let line = new THREE.Line(geometry, material);
-      this.scene.add(line);
+    loaderModel() {
+      var loader = new THREE.ObjectLoader();
+      loader.load("./model_test.json", (obj) => {
+        //   loader.load("./1.obj",  (obj) => {
+        obj.scale.x = obj.scale.y = obj.scale.z = 1;
+        this.scene.add(obj);
+      });
     },
     animate() {
       requestAnimationFrame(this.animate); //正常情况下是60次/秒
-      this.mesh.rotation.x += 0.01;
-      this.mesh.rotation.y += 0.02;
       this.renderer.render(this.scene, this.camera);
     },
   },
@@ -82,5 +72,6 @@ export default {
 #THREE_container {
   width: 100%;
   height: 100%;
+  background: #fff;
 }
 </style>

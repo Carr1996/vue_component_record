@@ -23,7 +23,8 @@ const routes = [
     icon: "el-icon-attract",
     component: () => import('../views/threeJS_index.vue'),
     children: [
-      { name: "基础", path: "basic", component: resolve => require(['../components/threeJS/basic.vue'], resolve) },
+      { name: "初始化", path: "basic", component: resolve => require(['../components/threeJS/basic.vue'], resolve) },
+      { name: "加载模型", path: "loader", component: resolve => require(['../components/threeJS/loader.vue'], resolve) },
     ]
   },
   {
