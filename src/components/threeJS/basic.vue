@@ -58,9 +58,10 @@ export default {
     drawLine() {
       let material = new THREE.LineBasicMaterial({ color: 0x0000ff });
       let geometry = new THREE.Geometry();
-      geometry.vertices.push(new THREE.Vector3(-100, -50, 0));
-      geometry.vertices.push(new THREE.Vector3(0, 10, 0));
-      geometry.vertices.push(new THREE.Vector3(100, -50, 0));
+      geometry.vertices.push(new THREE.Vector3(50, 0, 0));
+      geometry.vertices.push(new THREE.Vector3(0, 0, 0));
+      geometry.vertices.push(new THREE.Vector3(0, 50, 0));
+      // geometry.vertices.push(new THREE.Vector3(0, 0, 50));
       let line = new THREE.Line(geometry, material);
       this.scene.add(line);
     },
