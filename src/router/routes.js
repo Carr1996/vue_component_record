@@ -25,6 +25,7 @@ const routes = [
     children: [
       { name: "初始化", path: "basic", component: resolve => require(['../components/threeJS/basic.vue'], resolve) },
       { name: "加载模型", path: "loader", component: resolve => require(['../components/threeJS/loader.vue'], resolve) },
+      { name: "华鑫example", path: "hxIndex", component: resolve => require(['../components/threeJS/hx_example/hxIndex.vue'], resolve) },
     ]
   },
   {

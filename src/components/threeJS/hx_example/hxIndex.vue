@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="THREE_container"></div>
+    <div id="hx_container"></div>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import "three/examples/js/controls/OrbitControls";
 import * as THREE from "three";
 export default {
-  name: "THREEinit",
+  name: "hxinit",
   data() {
     return {
       camera: null,
@@ -19,10 +19,10 @@ export default {
   },
   methods: {
     init() {
-      let container = document.getElementById("THREE_container");
+      let container = document.getElementById("hx_container");
       //   创建场景
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color( 0xcce0ff );
+      // this.scene.background = new THREE.Color( "rgb(255,0,0)" );
       // 创建摄像机
       this.camera = new THREE.PerspectiveCamera(
         70, //视野角度
@@ -50,8 +50,10 @@ export default {
     },
     // 加载模型
     loaderModel() {
-      var loader = new THREE.ObjectLoader();
-      loader.load("model_test.json", (obj) => {
+      let loader = new THREE.ObjectLoader();
+      loader.load('/hx_model/HX.json', (obj) => {
+        obj.scale.x = obj.scale.y = obj.scale.z = 1;
+        debugger
         this.scene.add(obj);
       });
     },
@@ -68,7 +70,7 @@ export default {
 </script>
 
 <style>
-#THREE_container {
+#hx_container {
   width: 100%;
   height: 100%;
   background: #fff;
