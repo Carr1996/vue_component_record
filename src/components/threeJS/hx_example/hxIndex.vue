@@ -10,11 +10,14 @@
 <script>
 import * as THREE from "three";
 import Player from "./Player.js";
-import * as TWEEN from "@tweenjs/tween.js";
+import cameraAngle from "./cameraAngle";
+const TWEEN = require('@tweenjs/tween.js')
 export default {
   name: "hxinit",
   data() {
-    return {};
+    return {
+      lastHoverBuilding: [],
+    };
   },
   mounted() {
     this.initPlayer();
@@ -28,13 +31,26 @@ export default {
       player.init(this.$el);
 
       const { camera, controls } = player;
-      camera.position.fromArray([-54.91268170771308,84.35345529222373,  229.50865604754534])
-      camera.rotation.fromArray([-0.3800940504904185, 0.1858580246529288,  0.0736938738096836, "XYZ"])
+      camera.position.fromArray([
+        -54.91268170771308,
+        84.35345529222373,
+        229.50865604754534,
+      ]);
+      camera.rotation.fromArray([
+        -0.3800940504904185,
+        0.1858580246529288,
+        0.0736938738096836,
+        "XYZ",
+      ]);
 
       controls.maxPolarAngle = Math.PI * 0.5;
       controls.minDistance = 45;
       controls.maxDistance = 800;
-      controls.target.fromArray([ -97.66330838707935,  6.42620320022566e-18,  18.372594079404763]);
+      controls.target.fromArray([
+        -97.66330838707935,
+        6.42620320022566e-18,
+        18.372594079404763,
+      ]);
       controls.update();
 
       player.renderer.render(player.scene, player.camera);
@@ -62,7 +78,9 @@ export default {
     },
     dealBuilding(building) {
       building.name = "building";
-      this.buildingList = building.children.filter(b => b !== building.getObjectByName('GROUND_LIGHT'))
+      this.buildingList = building.children.filter(
+        (b) => b !== building.getObjectByName("GROUND_LIGHT")
+      );
       this.player.scene.add(building);
     },
     drawLine() {
@@ -79,14 +97,22 @@ export default {
     mousemove(event) {
       let container = document.getElementById("hx_container");
       const coord = {
-        x:event.clientX - container.offsetLeft, y:event.clientY - container.offsetTop
-      }
+        x: event.clientX - container.offsetLeft,
+        y: event.clientY - container.offsetTop,
+      };
       const mouse = {
         x: (coord.x / this.player.width) * 2 - 1,
-        y: -(coord.y / this.player.height) * 2 + 1
+        y: -(coord.y / this.player.height) * 2 + 1,
+      };
+      const els = this.player.findInteract(mouse, this.buildingList);
+      // console.log(els)
+      if (els.length > 0) {
+        let hoverObj = els[0].object;
+        while (!hoverObj.parent.isScene) hoverObj = hoverObj.parent;
+        this.lastHoverBuilding = hoverObj;
+      } else {
+        this.lastHoverBuilding = null;
       }
-      const els = this.player.findInteract(mouse, this.buildingList)
-      console.log(els)
     },
     mousedown(event) {
       // 用于判断是否鼠标点击都拖动再放开
@@ -101,6 +127,32 @@ export default {
       }
       console.log(player.camera);
       console.log(player.controls);
+      if (this.lastHoverBuilding) {
+        // 打印点击的建筑
+        if (cameraAngle[this.lastHoverBuilding.name]) {
+          this.moveCamera(cameraAngle[this.lastHoverBuilding.name]);
+        }
+      }
+    },
+    moveCamera(target) {
+      const camera = this.player.camera;
+      const controls = this.player.controls;
+      
+      const DURATION = 600;
+      new TWEEN.Tween(camera.position.toArray())
+        .to(target.position, DURATION)
+        .onUpdate( (arr) => camera.position.fromArray(arr))
+        .start();
+      new TWEEN.Tween(camera.rotation.toArray())
+        .to(target.rotation, DURATION)
+        .onUpdate((arr) => camera.rotation.fromArray(arr))
+        .start();
+      new TWEEN.Tween(controls.target.toArray())
+        .to(target.target, DURATION)
+        .onUpdate((arr) => {
+          controls.target.fromArray(arr)
+          controls.update();})
+        .start();
     },
   },
 };

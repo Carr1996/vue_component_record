@@ -1,7 +1,6 @@
 import * as THREE from "three";
-import * as TWEEN from "@tweenjs/tween.js";
 import "@public/MapControls";
-
+const TWEEN = require('@tweenjs/tween.js')
 const objectLoader = new THREE.ObjectLoader();
 const textureLoader = new THREE.TextureLoader()
 // const jsonLoader = {
