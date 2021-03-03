@@ -7,6 +7,7 @@ function resolve(dir) {
 module.exports = {
   lintOnSave: false, // 是否开启eslint保存检测
   publicPath: './', // 公共路径
+  // outputDir: 'components', // 打包后的文件名
   devServer: {
     open: false,
     host: '0.0.0.0',
