@@ -1,7 +1,7 @@
 <template>
   <span class="jump_number">
     {{ animatedNumber }}
-    <span style="display:none" ref="hiddenNumber">
+    <span style="display: none" ref="hiddenNumber">
       <slot></slot>
     </span>
   </span>
@@ -39,7 +39,9 @@ export default {
   computed: {
     animatedNumber() {
       return this.isNumber && !isNaN(+this.tweenedNumber)
-        ? (+this.tweenedNumber).toFixed(this.decimal)
+        ? (+this.tweenedNumber / Math.pow(10, this.decimal)).toFixed(
+            this.decimal
+          )
         : "-";
     },
     isNumber() {
