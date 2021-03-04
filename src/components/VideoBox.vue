@@ -7,7 +7,7 @@
 // hls在线直播视频接入
 export default {
   props: {
-    url: {
+    url: { 
       type: String,
     },
   },
